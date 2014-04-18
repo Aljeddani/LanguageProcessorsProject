@@ -79,7 +79,7 @@ PRIVATE void ParseIdentifier(void);
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  Main: parser entry point.  Sets up parser globals (opens input and */
+/*  Main: parser entry point.  Sets up parser globals (opens input and      */
 /*        output files, initialises current lookahead), then calls          */
 /*        "ParseProgram" to start the parse.                                */
 /*                                                                          */
@@ -160,11 +160,11 @@ PRIVATE void ParseDeclarations(void)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  ParseProcDeclaration implements:					   				    */
+/*  ParseProcDeclaration implements:	                      */
 /*                                                                          */
 /*      <ProcDeclarations> :== "PRODEDURE" <Identifire> [<ParameterList>]   */
-/*				";" [<Declarations>] {<ProcDeclaration>}    				*/
-/*				<Block> ";"			            							*/
+/*                           ";" [<Declarations>] {<ProcDeclaration>}       */
+/*	<Block> ";            */
 /*                                                                          */
 /*                                                                          */
 /*--------------------------------------------------------------------------*/
@@ -190,9 +190,9 @@ PRIVATE void ParseProcDeclaration(void)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  ParseParameterList implements:										    */
+/*  ParseParameterList implements:	                      */
 /*                                                                          */
-/*      <ParameterList> :== "(" <FormalParameter> {"," <FormalParameter>}	*/
+/*      <ParameterList> :== "(" <FormalParameter> {"," <FormalParameter>}   */
 /*                              ")"                                         */
 /*                                                                          */
 /*--------------------------------------------------------------------------*/
@@ -212,7 +212,7 @@ PRIVATE void ParseParameterList(void)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  ParseFormalParameter implements:									    */
+/*  ParseFormalParameter implements:	                      */
 /*                                                                          */
 /*      <FormalParameter> :== ["REF"] <Variable>                            */
 /*                                                                          */
@@ -229,7 +229,7 @@ PRIVATE void ParseFormalParameter(void)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  ParseBlock implements:												    */
+/*  ParseBlock implements:	                      */
 /*                                                                          */
 /*      <Block> :== "BEGIN" {<Statement> ";"} "END"                         */
 /*                                                                          */
@@ -252,7 +252,7 @@ PRIVATE void ParseBlock(void)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  ParseStatement implements:											    */
+/*  ParseStatement implements:	                      */
 /*                                                                          */
 /*      <Statement> :== <SimpleStatement> | <WhileStatement> |              */
 /*                          <IfStatement> | <ReadStatement> |               */
@@ -282,7 +282,7 @@ PRIVATE void ParseStatement(void)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  ParseSimpleStatement implements:									    */
+/*  ParseSimpleStatement implements:	                      */
 /*                                                                          */
 /*      <SimpleStatement> :== <Variable> <RestOfStatement>                  */
 /*                                                                          */
@@ -297,9 +297,9 @@ PRIVATE void ParseSimpleStatement(void)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  ParseRestOfStatement implements:									    */
+/*  ParseRestOfStatement implements:	                      */
 /*                                                                          */
-/*      <ParseRestOfStatement> :== <ProcCallList> | <Assignment> | ϵ 	    */
+/*      <ParseRestOfStatement> :== <ProcCallList> | <Assignment> | ϵ        */
 /*                                                                          */
 /*--------------------------------------------------------------------------*/
 
@@ -636,10 +636,6 @@ PRIVATE void ParseVariable(void)
 PRIVATE void ParseIntConst(void)
 {
     Accept(INTCONST);
-    while(CurrentToken.code == INTCONST)
-    {
-        Accept(INTCONST);
-    }
 }
 
 /*--------------------------------------------------------------------------*/
@@ -654,10 +650,6 @@ PRIVATE void ParseIntConst(void)
 PRIVATE void ParseIdentifier(void)
 {
     Accept(IDENTIFIER);
-    while(CurrentToken.code == IDENTIFIER)
-    {
-        Accept(IDENTIFIER);
-    }
 }
 
 /*--------------------------------------------------------------------------*/
